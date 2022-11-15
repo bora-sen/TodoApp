@@ -29,8 +29,9 @@ class Todo {
 		let li_btn = document.createElement("button");
 		li_btn.classList.add("todo__btn");
 		li_btn.innerText = "Done";
-		li_btn.addEventListener("click",(e) => {
-			li_item.toggleClass("todo-done");
+		li_btn.addEventListener("click",e => {
+			li_item.classList.toggle("todo-done");
+			e.preventDefault();
 		})
 		li_item.appendChild(li_btn)
 		return li_item;
@@ -40,5 +41,7 @@ InputButton.addEventListener("click", (e) => {
 	e.preventDefault();	
 	let new_todo_object = new Todo(InputField.value);
 	ListElement.appendChild(new_todo_object.render());
+	InputField.value="";
+	InputField.focus();
 	console.log("clicked");
 })
